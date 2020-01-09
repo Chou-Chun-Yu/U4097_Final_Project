@@ -45,8 +45,14 @@ def handle_message(event):
 		message = TextSendMessage(userId)
 	elif (event.message.text.lower() == 'profile'):
 		profile = line_bot_api.get_profile(event.source.user_id)
-		userFile = bot.user(profile)
-		message = TextSendMessage(userFile)
+		status = profile.status_message
+		if not status:
+			status = '-'
+
+		message = [TextSendMessage('Display name: ' + profile.display_name),
+					TextSendMessage('picture url: ' + profile.picture_url),
+					TextSendMessage('status_message: ' + status),
+					]
 	elif (event.message.text.lower() == "help"):
 		help_log = "完整的查詢天氣，請輸入[縣市名][天氣] e.g. '新北市天氣如何?'"
 		message = TextSendMessage(help_log)
