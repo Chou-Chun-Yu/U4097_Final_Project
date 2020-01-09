@@ -13,7 +13,6 @@ from linebot.models import *
 import os, stock
 import matplotlib.pyplot as plt
 import pandas as pd
-matplotlib.use('Agg')
 
 app = Flask(__name__)
 

@@ -1,4 +1,5 @@
 import twstock, time, matplotlib
+matplotlib.use('Agg')
 
 def stockRT(Snum): #Stock Number
 	respon = ""
