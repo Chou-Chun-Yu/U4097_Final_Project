@@ -61,7 +61,7 @@ def handle_message(event):
 		stockNO = event.message.text[1:]
 		rTInfo = stockRT(stockNO) #Real Time info
 		message = TextSendMessage(rTInfo)
-	elitf (event.message.text.lower() == "help"):
+	elif (event.message.text.lower() == "help"):
 		help_log = "完整的查詢天氣，請輸入[縣市名][天氣] e.g. '新北市天氣如何?'"
 		message = TextSendMessage(help_log)
 	else:
