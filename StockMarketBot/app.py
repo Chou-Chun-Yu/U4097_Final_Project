@@ -10,7 +10,7 @@ from linebot.exceptions import (
 	InvalidSignatureError
 )
 from linebot.models import *
-import twstock, random, time, matplotlib, bot
+import twstock, random, time, matplotlib, os, bot
 import matplotlib.pyplot as plt
 import pandas as pd
 matplotlib.use('Agg')
@@ -55,7 +55,6 @@ def handle_message(event):
 		message = TextSendMessage(invalidSentence)
 	line_bot_api.reply_message(event.reply_token, message)
 
-import os
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 5000))
 	app.run(host='0.0.0.0', port=port)
