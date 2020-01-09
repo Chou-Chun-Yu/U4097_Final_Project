@@ -1,9 +1,10 @@
 from datetime import timedelta, datetime
 from imgurpython import ImgurClient
+from matplotlib.font_manager import FontProperties
 import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
-plt.rcParams["font.family"] = ".fonts/DejaVuSans.ttf"
+fontprop = FontProperties(fname = ".fonts/DejaVuSans.ttf", size = 10)
 
 matplotlib.use("Agg")
 
@@ -44,7 +45,9 @@ def monthP(Snum): #month Price
 	stock = twstock.Stock(Snum)
 	stockData = {"close":stock.close, "date":stock.date, "open":stock.open}
 	df1 = pd.DataFrame.from_dict(stockData)
-	df1.plot(x="日期", y="股價")
+	df1.plot()
+	plt.xlabel("日期", fontproperties = fontprop)
+	plt.ylabel("股價", fontproperties = fontprop)
 	plt.title("[%s]" %(stock.sid))
 	plt.savefig(stockFig)
 	plt.close()
