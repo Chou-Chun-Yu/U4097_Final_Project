@@ -44,7 +44,7 @@ def monthP(Snum): #month Price
 	stock = twstock.Stock(Snum)
 	stockData = {"close":stock.close, "date":stock.date, "open":stock.open}
 	df1 = pd.DataFrame.from_dict(stockData)
-	df1.plot(x="日期", y="股價", fontproperties="SimHei")
+	df1.plot(x="日期", y="股價")
 	plt.title("[%s]" %(stock.sid))
 	plt.savefig(stockFig)
 	plt.close()
