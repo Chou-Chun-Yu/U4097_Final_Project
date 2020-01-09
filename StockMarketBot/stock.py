@@ -1,4 +1,4 @@
-elif(text.startswith('#')):
+if(text.startswith('#')):
 	text = text[1:]
 	content = ''
 	stock_rt = twstock.realtime.get(text)
