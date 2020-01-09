@@ -6,16 +6,6 @@ import pandas as pd
 
 matplotlib.use("Agg")
 
-def uploadFig(fig): #upload figure to remote host(imgur)
-	client_id = "adf041713a28815"
-	client_secret = "7357f06294a583740d87499b10380abed037086a"
-	client = ImgurClient(client_id, client_secret)
-	print("Uploading image... ")
-	image = client.upload_from_path(fig, anon=True)
-	print("Done")
-	url = image["link"]
-	return url
-
 def stockRT(Snum): #Stock Number
 	respon = ""
 	stock_rt = twstock.realtime.get(Snum)
@@ -48,5 +38,11 @@ def monthP(Snum): #month Price
 	plt.title("[%s]" %(stock.sid))
 	plt.savefig(stockFig)
 	plt.close()
-	respon = uploadFig(stockFig)
+	client_id = "adf041713a28815"
+	client_secret = "7357f06294a583740d87499b10380abed037086a"
+	client = ImgurClient(client_id, client_secret)
+	print("Uploading image... ")
+	image = client.upload_from_path(stockFig, anon=True)
+	print("Done")
+	respon = image["link"]
 	return respon
