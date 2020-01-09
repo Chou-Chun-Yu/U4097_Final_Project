@@ -1,9 +1,6 @@
-import twstock, random, time, matplotlib, bot
-import matplotlib.pyplot as plt
-import pandas as pd
+from __future__ import unicode_literals
 from datetime import timedelta, datetime
 from pymongo import MongoClient
-from __future__ import unicode_literals
 from imgurpython import ImgurClient
 from flask import Flask, request, abort
 from linebot import (
@@ -13,6 +10,9 @@ from linebot.exceptions import (
 	InvalidSignatureError
 )
 from linebot.models import *
+import twstock, random, time, matplotlib, bot
+import matplotlib.pyplot as plt
+import pandas as pd
 matplotlib.use('Agg')
 
 app = Flask(__name__)
