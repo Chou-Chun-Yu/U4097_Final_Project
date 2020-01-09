@@ -4,7 +4,7 @@ from matplotlib.font_manager import FontProperties
 import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
-fontprop = FontProperties(fname = ".fonts/DejaVuSans.ttf")
+#fontprop = FontProperties(fname = ".fonts/DejaVuSans.ttf")
 
 matplotlib.use("Agg")
 
@@ -45,9 +45,10 @@ def monthP(Snum): #month Price
 	stock = twstock.Stock(Snum)
 	stockData = {"close":stock.close, "date":stock.date, "open":stock.open}
 	df1 = pd.DataFrame.from_dict(stockData)
-	df1.plot()
-	plt.xlabel("日期", fontproperties = fontprop)
-	plt.ylabel("股價", fontproperties = fontprop)
+	df1.plot(x = "date", y = "close")
+	#heroku底下中文字型會出現KeyError，待解決
+	#plt.xlabel("日期", fontproperties = fontprop)
+	#plt.ylabel("股價", fontproperties = fontprop)
 	plt.title("[%s]" %(stock.sid))
 	plt.savefig(stockFig)
 	plt.close()
