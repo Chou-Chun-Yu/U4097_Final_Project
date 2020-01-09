@@ -41,7 +41,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if event.message.text.lower()=='me':
-		message = str(event.source.user_id)
+		userId = str(event.source.user_id)
+		message = TextSendMessage(userId)
 	elif (event.message.text.lower() == 'profile'):
 		profile = line_bot_api.get_profile(event.source.user_id)
 		message = bot.user(profile)
