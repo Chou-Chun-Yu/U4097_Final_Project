@@ -4,7 +4,17 @@ import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 
-matplotlib.use('Agg')
+matplotlib.use("Agg")
+
+def uploadFig(fig): #upload figure to remote host(imgur)
+	client_id = "adf041713a28815"
+	client_secret = "7357f06294a583740d87499b10380abed037086a"
+	client = ImgurClient(client_id, client_secret)
+	print("Uploading image... ")
+	image = client.upload_from_path(fig, anon=True)
+	print("Done")
+	url = image["link"]
+	return url
 
 def stockRT(Snum): #Stock Number
 	respon = ""
@@ -27,4 +37,16 @@ def stockRT(Snum): #Stock Number
 	date5 = stock.date[-5:][::-1]
 	for i in range(len(price5)):
 		respon += "[%s] %s\n" %(date5[i].strftime("%Y-%m-%d"), price5[i])
+	return respon
+
+def monthP(Snum): #month Price
+	stockFig = "%s.png"%(Snum)
+	stock = twstock.Stock(Snum)
+	stockData = {"close":stock.close, "date":stock.date, "open":stock.open}
+	df1 = pd.DataFrame.from_dict(stockData)
+	df1.plot(x="date", y="close")
+	plt.title("[%s]" %(stock.sid))
+	plt.savefig(stockFig)
+	plt.close()
+	respon = uploadFig(stockFig)
 	return respon
