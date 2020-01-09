@@ -1,3 +1,4 @@
+from datetime import timedelta, datetime
 import twstock, time, matplotlib
 
 def stockRT(Snum): #Stock Number

@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-from datetime import timedelta, datetime
 from pymongo import MongoClient
 from imgurpython import ImgurClient
 from flask import Flask, request, abort
