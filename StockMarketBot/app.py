@@ -1,5 +1,11 @@
+import twstock, random, time, matplotlib, bot
+import matplotlib.pyplot as plt
+import pandas as pd
+from datetime import timedelta, datetime
+from pymongo import MongoClient
+from __future__ import unicode_literals
+from imgurpython import ImgurClient
 from flask import Flask, request, abort
-
 from linebot import (
 	LineBotApi, WebhookHandler
 )
@@ -7,7 +13,7 @@ from linebot.exceptions import (
 	InvalidSignatureError
 )
 from linebot.models import *
-import crawler
+matplotlib.use('Agg')
 
 app = Flask(__name__)
 
@@ -34,10 +40,12 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-	if any(ask in event.message.text for ask in weather):
-		report = crawler.getReport(event.message.text)
-		message = TextSendMessage(report)
-	elif(event.message.text.lower() == "help"):
+	if event.message.text.lower()=='me':
+		message = str(event.source.user_id)
+	elif (event.message.text.lower() == 'profile'):
+		profile = line_bot_api.get_profile(event.source.user_id)
+		message = bot.user(profile)
+	elif (event.message.text.lower() == "help"):
 		help_log = "完整的查詢天氣，請輸入[縣市名][天氣] e.g. '新北市天氣如何?'"
 		message = TextSendMessage(help_log)
 	else:
