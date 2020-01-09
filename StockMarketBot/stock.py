@@ -1,5 +1,10 @@
 from datetime import timedelta, datetime
+from imgurpython import ImgurClient
 import twstock, time, matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+
+matplotlib.use('Agg')
 
 def stockRT(Snum): #Stock Number
 	respon = ""

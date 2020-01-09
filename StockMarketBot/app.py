@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-from pymongo import MongoClient
-from imgurpython import ImgurClient
 from flask import Flask, request, abort
 from linebot import (
 	LineBotApi, WebhookHandler
@@ -10,9 +7,6 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 import os, stock
-import matplotlib.pyplot as plt
-import pandas as pd
-matplotlib.use('Agg')
 
 app = Flask(__name__)
 

@@ -1,11 +1,10 @@
 line-bot-sdk
 flask
-gunicorn
-pymongo
-imgurpython
 requests
-numpy
-matplotlib
 twstock
-pandas
 lxml
+matplotlib
+pandas
+imgurpython
+numpy
+gunicorn
