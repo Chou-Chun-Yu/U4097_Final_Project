@@ -3,6 +3,7 @@ from imgurpython import ImgurClient
 import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
+plt.rcParams["font.family"]="DFKai-SB"
 
 matplotlib.use("Agg")
 
