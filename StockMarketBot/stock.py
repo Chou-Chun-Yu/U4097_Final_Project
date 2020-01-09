@@ -1,3 +1,5 @@
+import twstock, time, matplotlib
+
 def stockRT(Snum): #Stock Number
 	respon = ""
 	stock_rt = twstock.realtime.get(Snum)

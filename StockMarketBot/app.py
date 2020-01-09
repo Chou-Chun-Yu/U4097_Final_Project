@@ -13,6 +13,7 @@ from linebot.models import *
 import os, stock
 import matplotlib.pyplot as plt
 import pandas as pd
+matplotlib.use('Agg')
 
 app = Flask(__name__)
 
@@ -59,12 +60,10 @@ def handle_message(event):
 	'''
 	if event.message.text.startswith("#"):
 		stockNO = event.message.text[1:]
-		rTinfo = stock.stockRT(stockNO) #Real Time Info
-		message = TextSendMessage(rTinfo)
-	elif event.message.text.startswith("/"):
-		pass
-	elif (event.message.text.lower() == "help"):
-		help_log = ""
+		rTInfo = stockRT(stockNO) #Real Time info
+		message = TextSendMessage(rTInfo)
+	elitf (event.message.text.lower() == "help"):
+		help_log = "完整的查詢天氣，請輸入[縣市名][天氣] e.g. '新北市天氣如何?'"
 		message = TextSendMessage(help_log)
 	else:
 		invalidSentence = "無法辨識的內容，輸入[help]獲得更多資訊"
