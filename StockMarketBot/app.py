@@ -10,7 +10,7 @@ from linebot.exceptions import (
 	InvalidSignatureError
 )
 from linebot.models import *
-import twstock, random, time, matplotlib, os, stock
+import os, stock
 import matplotlib.pyplot as plt
 import pandas as pd
 matplotlib.use('Agg')
