@@ -3,7 +3,7 @@ from imgurpython import ImgurClient
 import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
-plt.rcParams["font.family"]="TW-Kai"
+plt.rcParams["font.family"] = ".fonts/TW-Kai-98_1.ttf"
 
 matplotlib.use("Agg")
 
