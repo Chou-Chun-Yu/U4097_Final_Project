@@ -53,6 +53,10 @@ def handle_message(event):
 	'''
 	if event.message.text.startswith("#"):
 		stockNO = event.message.text[1:]
+		rTInfo = stock.stockRT(stockNO) #Real Time info
+		message = TextSendMessage(rTInfo)
+	elif event.message.text.startswith("/"):
+		stockNO = event.message.text[1:]
 		rTInfo = stockRT(stockNO) #Real Time info
 		message = TextSendMessage(rTInfo)
 	elif (event.message.text.lower() == "help"):
