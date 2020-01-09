@@ -6,6 +6,15 @@ import pandas as pd
 
 matplotlib.use("Agg")
 
+def uploadFig(fig):
+	client_id = "adf041713a28815"
+	client_secret = "7357f06294a583740d87499b10380abed037086a"
+	client = ImgurClient(client_id, client_secret)
+	print("Uploading image... ")
+	image = client.upload_from_path(fig, anon=True)
+	print("Done")
+	return image["link"]
+
 def stockRT(Snum): #Stock Number
 	respon = ""
 	stock_rt = twstock.realtime.get(Snum)
@@ -34,15 +43,9 @@ def monthP(Snum): #month Price
 	stock = twstock.Stock(Snum)
 	stockData = {"close":stock.close, "date":stock.date, "open":stock.open}
 	df1 = pd.DataFrame.from_dict(stockData)
-	df1.plot(x="date", y="close")
+	df1.plot(x="日期", y="股價")
 	plt.title("[%s]" %(stock.sid))
 	plt.savefig(stockFig)
 	plt.close()
-	client_id = "adf041713a28815"
-	client_secret = "7357f06294a583740d87499b10380abed037086a"
-	client = ImgurClient(client_id, client_secret)
-	print("Uploading image... ")
-	image = client.upload_from_path(stockFig, anon=True)
-	print("Done")
-	respon = image["link"]
+	respon = uploadFig(stockFig)
 	return respon
