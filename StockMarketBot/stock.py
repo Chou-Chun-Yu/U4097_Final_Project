@@ -4,7 +4,7 @@ from matplotlib.font_manager import FontProperties
 import twstock, time, matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
-fontprop = FontProperties(fname = ".fonts/DejaVuSans.ttf", size = 10)
+fontprop = FontProperties(fname = ".fonts/DejaVuSans.ttf")
 
 matplotlib.use("Agg")
 
