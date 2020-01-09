@@ -58,9 +58,10 @@ def handle_message(event):
 	elif event.message.text.startswith("/"):
 		stockNO = event.message.text[1:]
 		rTInfo = stock.monthP(stockNO)
-		message = ImageSendMessage(rTInfo)
+		message = ImageSendMessage(original_content_url = rTInfo,
+								   preview_image_url = rTInfo)
 	elif (event.message.text.lower() == "help"):
-		help_log = "完整的查詢天氣，請輸入[縣市名][天氣] e.g. '新北市天氣如何?'"
+		help_log = "輸入'#+股票代號'來查詢即時股價\n輸入'/+股票代號'以顯示一個月內股價走向"
 		message = TextSendMessage(help_log)
 	else:
 		invalidSentence = "無法辨識的內容，輸入[help]獲得更多資訊"
