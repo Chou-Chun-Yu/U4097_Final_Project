@@ -8,13 +8,16 @@ import pandas as pd
 
 matplotlib.use("Agg")
 
+#config = configparser.ConfigParser()
+#config.read("config.ini")
+
 def uploadFig(fig):
-	client_id = "adf041713a28815"
-	client_secret = "7357f06294a583740d87499b10380abed037086a"
+	client_id = config["IMGUR"]["CLIENT_ID"]
+	client_secret = config["IMGUR"]["CLIENT_SECRET"]
 	client = ImgurClient(client_id, client_secret)
-	print("Uploading image... ")
+	#print("Uploading image... ")
 	image = client.upload_from_path(fig, anon=True)
-	print("Done")
+	#print("Done")
 	return image["link"]
 
 def stockRT(Snum): #Stock Number
